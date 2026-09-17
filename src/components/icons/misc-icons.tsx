@@ -40,6 +40,22 @@ export function CollapseSidebarIcon() {
   );
 }
 
+export function ExpandSidebarIcon() {
+  return (
+    <div className="box-border w-[16px] shrink-0 h-[16px] overflow-hidden relative">
+      <svg viewBox="0 0 18 18" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" className="box-border w-[12px] h-[12px] absolute left-[2px] top-[2px] overflow-visible z-0">
+        <path d="M2 0L16 0C17.10457 0 18 0.89543045 18 2L18 16C18 17.10457 17.10457 18 16 18L2 18C0.89543045 18 0 17.10457 0 16L0 2C0 0.89543045 0.89543045 0 2 0Z" fill="none" stroke="#334155ff" strokeWidth={1.333} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+      </svg>
+      <svg viewBox="0 0 1 18" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" className="box-border w-[1.333px] h-[12px] absolute left-[6px] top-[2px] overflow-visible z-10">
+        <path d="M0 0L0 18" fill="none" stroke="#334155ff" strokeWidth={1.333} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+      </svg>
+      <svg viewBox="0 0 3 6" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" className="box-border w-[2px] h-[4px] absolute left-[9.333px] top-[6px] overflow-visible z-20">
+        <path d="M0 0L3 3L0 6" fill="none" stroke="#334155ff" strokeWidth={1.333} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
+      </svg>
+    </div>
+  );
+}
+
 export function FilterGlyphIcon() {
   const s = { fill: "none", stroke: "#64748bff", strokeWidth: 1.167, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, vectorEffect: "non-scaling-stroke" as const };
   return (
