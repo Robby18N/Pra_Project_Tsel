@@ -8,12 +8,12 @@ export function KpiCard({ icon: Icon, iconWrapClassName, value, label, subLabel,
       <div className="box-border w-full h-fit shrink-0 flex flex-row gap-[12px] justify-between items-start">
         <div className="box-border w-fit shrink-0 h-fit flex flex-row gap-[8px] justify-start items-center">
           <div
-            className={`box-border w-[36px] shrink-0 h-[36px] shadow-[0px_1px_1.531px_0px_#0000000d] flex flex-row gap-0 justify-center items-center rounded-[12px] ${iconWrapClassName}`}
+            className={`box-border w-[16px] shrink-0 h-[16px] shadow-[0px_1px_1.531px_0px_#0000000d] flex flex-row gap-0 justify-center items-center rounded-[12px] ${iconWrapClassName}`}
           >
-            <div className="box-border w-[18px] shrink-0 h-[18px] overflow-hidden relative">
+            <div className="box-border w-[16px] shrink-0 h-[16px] overflow-hidden relative">
               {/* Icon glyphs are authored on a 20px grid; scale down to the
-                  requested 18px without re-deriving every absolute path. */}
-              <div className="w-[20px] h-[20px] origin-top-left scale-90">
+                  requested 16px without re-deriving every absolute path. */}
+              <div className="w-[20px] h-[20px] origin-top-left scale-[0.8]">
                 <Icon />
               </div>
             </div>
