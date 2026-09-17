@@ -15,7 +15,7 @@ export function ProgressBar({ percent, background, className = "" }: ProgressBar
   const clamped = Math.max(0, Math.min(100, percent));
   return (
     <div
-      className={`box-border w-full h-[8px] shrink-0 overflow-hidden rounded-[9999px] bg-[#f1f5f9] ${className}`}
+      className={`box-border w-full h-[6px] shrink-0 overflow-hidden rounded-[9999px] bg-[#f1f5f9] ${className}`}
     >
       <div
         className="h-full rounded-[9999px]"
