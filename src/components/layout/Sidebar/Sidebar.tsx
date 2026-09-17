@@ -2,7 +2,7 @@ import { CollapseSidebarIcon } from "@/components/icons/misc-icons";
 import { SIDEBAR_LOGO_DATA_URI } from "./logo";
 import { NAV_ITEMS } from "./nav-items";
 
-/** Fixed left navigation rail: org identity, primary nav, and signed-in user. */
+/** Fixed left navigation rail: org identity and primary nav. */
 export function Sidebar() {
   return (
     <div className="box-border w-[289px] h-[882px] absolute left-0 top-0 flex flex-col gap-0 justify-start items-start bg-white border-r border-[#e2e8f0] z-10">
@@ -62,22 +62,6 @@ export function Sidebar() {
           </a>
         ))}
       </nav>
-
-      <div className="box-border w-full h-fit shrink-0 flex flex-col gap-0 p-[16px] justify-end items-start border-t border-[#e2e8f0]">
-        <div className="text-[12px]/[16px] box-border text-[#64748bff] font-normal text-left whitespace-nowrap">
-          Signed in as
-        </div>
-        <div className="box-border w-[256px] h-[20px] shrink-0 flex flex-col gap-0 justify-start items-start overflow-hidden">
-          <div className="text-[14px]/[20px] box-border text-[#020617ff] font-medium text-left whitespace-nowrap">
-            Rizky Pratama
-          </div>
-        </div>
-        <div className="box-border w-[256px] h-[16px] shrink-0 flex flex-col gap-0 justify-start items-start overflow-hidden">
-          <div className="text-[12px]/[16px] box-border text-[#64748bff] font-normal text-left whitespace-nowrap">
-            L0 Operations
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
