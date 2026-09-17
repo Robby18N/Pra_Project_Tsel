@@ -6,7 +6,7 @@ import { CUSTOMER_AVAILABILITY } from "./customer-data";
 /** "Top 5 Customer availability" panel — ranked list with a progress bar per customer. */
 export function CustomerAvailabilityCard() {
   return (
-    <Card className="flex-1 min-w-0 h-full rounded-[12px] flex flex-col gap-0 justify-start items-start">
+    <Card className="flex-1 min-w-0 rounded-[12px] flex flex-col gap-0 justify-start items-start">
       <div className="box-border w-full h-fit shrink-0 p-[16px_16px_0px_16px]">
         <SectionHeading title="Top 5 Customer availability" subtitle="Top five this period" />
       </div>
