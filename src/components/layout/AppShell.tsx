@@ -12,7 +12,14 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen overflow-x-auto bg-[#f1f5f9] flex justify-center">
       <div className="box-border w-full max-w-[1470px] min-w-[1200px] h-fit shrink-0 relative flex flex-col gap-0 justify-start items-start bg-[#f1f5f9]">
-        <div className="box-border w-full h-fit shrink-0 flex flex-col gap-0 pl-[289px] justify-start items-start">
+        {/* Soft color washes so the glassmorphism cards have something to
+            blur/tint — plain flat backgrounds make backdrop-blur invisible. */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden z-0">
+          <div className="absolute top-[-140px] left-[8%] w-[440px] h-[440px] rounded-full bg-[#93c5fd66] blur-[110px]" />
+          <div className="absolute top-[180px] right-[-120px] w-[400px] h-[400px] rounded-full bg-[#c4b5fd66] blur-[110px]" />
+          <div className="absolute bottom-[-160px] left-[35%] w-[520px] h-[520px] rounded-full bg-[#f9a8d466] blur-[130px]" />
+        </div>
+        <div className="relative z-[1] box-border w-full h-fit shrink-0 flex flex-col gap-0 pl-[289px] justify-start items-start">
           {children}
         </div>
         <Sidebar />
