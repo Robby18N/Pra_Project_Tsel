@@ -4,7 +4,7 @@ import type { KpiDatum } from "./kpi-data";
 
 export function KpiCard({ icon: Icon, iconWrapClassName, value, label, subLabel, badge }: KpiDatum) {
   return (
-    <Card className="[flex:1_1_0] h-full rounded-[20px] flex flex-col gap-[12px] p-[12px] justify-start items-start">
+    <Card className="[flex:1_1_0] h-full rounded-[12px] flex flex-col gap-[12px] p-[12px] justify-start items-start">
       <div className="box-border w-full h-fit shrink-0 flex flex-row gap-[12px] justify-between items-start">
         <div className="box-border w-fit shrink-0 h-fit flex flex-row gap-[8px] justify-start items-center">
           <div
