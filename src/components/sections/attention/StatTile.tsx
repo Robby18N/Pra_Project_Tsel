@@ -4,8 +4,8 @@ import type { AttentionStat } from "./attention-data";
 
 export function StatTile({ label, value, badgeLabel, badgeClassName, badgeTextClassName }: AttentionStat) {
   return (
-    <Card className="[flex:1_1_0] h-fit rounded-[12px] flex flex-row gap-[12px] p-[8px_12px] justify-center items-start">
-      <div className="box-border w-fit shrink-0 h-fit flex flex-col gap-[6px] justify-center items-center">
+    <Card className="[flex:1_1_0] h-fit rounded-[12px] flex flex-row gap-[12px] p-[10px_12px] justify-center items-start">
+      <div className="box-border w-fit shrink-0 h-fit flex flex-col gap-[12px] justify-center items-center">
         <div className="text-[14px]/[20px] box-border text-[#334155ff] font-normal text-left whitespace-nowrap">
           {label}
         </div>
