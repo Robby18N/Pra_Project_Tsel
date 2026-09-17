@@ -1,0 +1,20 @@
+import type { Metadata } from "next";
+import { GeistSans as geistSans } from "geist/font/sans";
+import { GeistMono as geistMono } from "geist/font/mono";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "NOC Executive Dashboard",
+  description: "Service reliability across every managed customer",
+};
+
+export default function RootLayout({ children }: LayoutProps<"/">) {
+  return (
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">{children}</body>
+    </html>
+  );
+}
