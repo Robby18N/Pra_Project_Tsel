@@ -2,20 +2,16 @@ import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import type { KpiDatum } from "./kpi-data";
 
-export function KpiCard({ icon: Icon, iconWrapClassName, value, label, subLabel, badge }: KpiDatum) {
+export function KpiCard({ icon: Icon, value, label, subLabel, badge }: KpiDatum) {
   return (
     <Card className="[flex:1_1_0] h-full rounded-[12px] flex flex-col gap-[12px] p-[12px] justify-start items-start">
       <div className="box-border w-full h-fit shrink-0 flex flex-row gap-[12px] justify-between items-start">
         <div className="box-border w-fit shrink-0 h-fit flex flex-row gap-[8px] justify-start items-center">
-          <div
-            className={`box-border w-[16px] shrink-0 h-[16px] shadow-[0px_1px_1.531px_0px_#0000000d] flex flex-row gap-0 justify-center items-center rounded-[12px] ${iconWrapClassName}`}
-          >
-            <div className="box-border w-[16px] shrink-0 h-[16px] overflow-hidden relative">
-              {/* Icon glyphs are authored on a 20px grid; scale down to the
-                  requested 16px without re-deriving every absolute path. */}
-              <div className="w-[20px] h-[20px] origin-top-left scale-[0.8]">
-                <Icon />
-              </div>
+          <div className="box-border w-[16px] shrink-0 h-[16px] overflow-hidden relative">
+            {/* Icon glyphs are authored on a 20px grid; scale down to the
+                requested 16px without re-deriving every absolute path. */}
+            <div className="w-[20px] h-[20px] origin-top-left scale-[0.8]">
+              <Icon />
             </div>
           </div>
           <div className="text-[18px]/[27px] box-border text-[#020617ff] font-semibold text-left whitespace-nowrap">
