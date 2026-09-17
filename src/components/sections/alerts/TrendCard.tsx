@@ -19,7 +19,7 @@ export function TrendCard({ label, dotColor, value, trend, trendBgClassName, tre
             {trend}
           </Badge>
         </div>
-        <div className="text-[28px]/[32px] box-border text-[#020617ff] font-bold text-left whitespace-nowrap">
+        <div className="text-[18px]/[27px] box-border text-[#020617ff] font-bold text-left whitespace-nowrap">
           {value}
         </div>
       </div>
