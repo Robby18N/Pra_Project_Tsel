@@ -23,8 +23,10 @@ export function NocOperationsPage() {
         <DeviceStatusRow />
         <div className="box-border w-full h-fit shrink-0 flex flex-row gap-[12px] justify-start items-stretch">
           <OfflineRegionCard />
-          <DeviceStatusDonutCard />
-          <AvailabilityChartCard />
+          <div className="box-border [flex:1_1_0] min-w-0 h-fit flex flex-col gap-[12px] justify-start items-stretch">
+            <DeviceStatusDonutCard />
+            <AvailabilityChartCard />
+          </div>
         </div>
         <DevicesByCustomerTable />
       </main>
