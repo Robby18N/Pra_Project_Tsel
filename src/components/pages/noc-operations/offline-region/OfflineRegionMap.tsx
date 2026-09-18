@@ -1,43 +1,79 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import mapboxgl from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+import { MAPBOX_ACCESS_TOKEN, MAPBOX_STYLE } from "@/lib/mapbox-config";
 import { REGION_DATA, MAX_REGION_COUNT, regionColor } from "./offline-region-data";
 
+/** Indonesia's rough bounding box — [southwest, northeast]. */
+const INDONESIA_BOUNDS: [[number, number], [number, number]] = [
+  [94, -11.5],
+  [142, 6.5],
+];
+
 /**
- * Simplified stand-in for the source design's hand-drawn Indonesia heatmap:
- * a dot per region, positioned roughly per its real geography, sized and
- * colored by offline-device count.
+ * Real Mapbox basemap of Indonesia with a marker per region, sized and
+ * colored by offline-device count — replaces the earlier hand-drawn dot-map
+ * placeholder with an actual, pannable/zoomable map.
  */
 export function OfflineRegionMap() {
-  return (
-    <div className="box-border w-full h-[180px] shrink-0 relative rounded-[8px] bg-[#f8fafcff] border border-[#e2e8f0] overflow-hidden">
-      <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-        <defs>
-          <pattern id="noc-region-grid" width="24" height="24" patternUnits="userSpaceOnUse">
-            <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#e2e8f0" strokeWidth={1} />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#noc-region-grid)" />
-      </svg>
-      {REGION_DATA.map((r) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<mapboxgl.Map | null>(null);
+
+  useEffect(() => {
+    if (!containerRef.current || mapRef.current) return;
+
+    if (!MAPBOX_ACCESS_TOKEN) {
+      console.warn(
+        "NEXT_PUBLIC_MAPBOX_TOKEN is not set — add it to .env.local (see .env.example) to render the offline-region map."
+      );
+      return;
+    }
+
+    mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
+    const map = new mapboxgl.Map({
+      container: containerRef.current,
+      style: MAPBOX_STYLE,
+      bounds: INDONESIA_BOUNDS,
+      fitBoundsOptions: { padding: 16 },
+      attributionControl: false,
+    });
+    mapRef.current = map;
+
+    // Don't let the map trap the page's mouse-wheel scroll while embedded in a card.
+    map.scrollZoom.disable();
+    map.addControl(new mapboxgl.AttributionControl({ compact: true }));
+    map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), "top-right");
+
+    map.on("load", () => {
+      for (const r of REGION_DATA) {
         const size = 14 + (r.count / MAX_REGION_COUNT) * 22;
-        return (
-          <div
-            key={r.region}
-            title={`${r.region}: ${r.count} offline`}
-            className="absolute rounded-full flex items-center justify-center text-white font-semibold"
-            style={{
-              left: `${r.x}%`,
-              top: `${r.y}%`,
-              width: size,
-              height: size,
-              transform: "translate(-50%, -50%)",
-              backgroundColor: regionColor(r.count),
-              fontSize: 9,
-              boxShadow: "0 0 0 3px #ffffffb3",
-            }}
-          >
-            {r.count}
-          </div>
-        );
-      })}
-    </div>
+        const el = document.createElement("div");
+        el.className = "flex items-center justify-center rounded-full text-white font-semibold";
+        el.style.width = `${size}px`;
+        el.style.height = `${size}px`;
+        el.style.fontSize = "9px";
+        el.style.lineHeight = "1";
+        el.style.backgroundColor = regionColor(r.count);
+        el.style.boxShadow = "0 0 0 3px #ffffffb3";
+        el.title = `${r.region}: ${r.count} offline`;
+        el.textContent = String(r.count);
+
+        new mapboxgl.Marker({ element: el }).setLngLat([r.lng, r.lat]).addTo(map);
+      }
+    });
+
+    return () => {
+      map.remove();
+      mapRef.current = null;
+    };
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      className="box-border w-full h-[220px] shrink-0 rounded-[8px] border border-[#e2e8f0] overflow-hidden"
+    />
   );
 }
