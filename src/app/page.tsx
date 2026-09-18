@@ -1,26 +1,23 @@
+"use client";
+
+import { useState } from "react";
 import { AppShell } from "@/components/layout/AppShell";
-import { Header } from "@/components/sections/header/Header";
-import { FilterBar } from "@/components/sections/filter-bar/FilterBar";
-import { KeyFiguresSection } from "@/components/sections/key-figures/KeyFiguresSection";
-import { AlertsSection } from "@/components/sections/alerts/AlertsSection";
-import { ServiceHealthCard } from "@/components/sections/service-health/ServiceHealthCard";
-import { CustomerAvailabilityCard } from "@/components/sections/customer-availability/CustomerAvailabilityCard";
-import { AttentionCard } from "@/components/sections/attention/AttentionCard";
+import type { PageId } from "@/components/layout/Sidebar/nav-items";
+import { NAV_ITEMS } from "@/components/layout/Sidebar/nav-items";
+import { ExecutiveDashboard } from "@/components/pages/executive/ExecutiveDashboard";
+import { NocOperationsPage } from "@/components/pages/noc-operations/NocOperationsPage";
+import { ComingSoonPage } from "@/components/pages/coming-soon/ComingSoonPage";
 
 export default function Home() {
+  const [activePage, setActivePage] = useState<PageId>("executive");
+
   return (
-    <AppShell>
-      <Header />
-      <FilterBar />
-      <main className="box-border w-full h-fit shrink-0 flex flex-col gap-[12px] p-[20px] justify-start items-start">
-        <KeyFiguresSection />
-        <AlertsSection />
-        <div className="box-border w-full h-fit shrink-0 flex flex-row gap-[12px] justify-start items-stretch">
-          <ServiceHealthCard />
-          <CustomerAvailabilityCard />
-          <AttentionCard />
-        </div>
-      </main>
+    <AppShell activePage={activePage} onNavigate={setActivePage}>
+      {activePage === "executive" && <ExecutiveDashboard />}
+      {activePage === "noc-operations" && <NocOperationsPage />}
+      {activePage !== "executive" && activePage !== "noc-operations" && (
+        <ComingSoonPage title={NAV_ITEMS.find((item) => item.id === activePage)?.label ?? ""} />
+      )}
     </AppShell>
   );
 }

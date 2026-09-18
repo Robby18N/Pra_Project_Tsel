@@ -3,17 +3,24 @@
 import { useState } from "react";
 import type { ReactNode } from "react";
 import { Sidebar } from "./Sidebar/Sidebar";
+import type { PageId } from "./Sidebar/nav-items";
+
+interface AppShellProps {
+  children: ReactNode;
+  activePage: PageId;
+  onNavigate: (page: PageId) => void;
+}
 
 /**
  * Page-level frame: centers the dashboard canvas (fluid up to the 1470px
  * design width, e.g. fits a 1440px viewport without horizontal scroll),
  * offsets the scrollable content past the sidebar rail, and renders the
  * sidebar itself. Owns the collapsed/expanded state so the content offset
- * (289px vs 76px) stays in step with the sidebar's own width. Keeping this
- * here means `page.tsx` only has to list *what* goes on the page, not *how*
- * the shell is put together.
+ * (289px vs 76px) stays in step with the sidebar's own width. Which page is
+ * active lives one level up (`page.tsx`) since it decides *what* content is
+ * rendered as `children` — this component only forwards it to the sidebar.
  */
-export function AppShell({ children }: { children: ReactNode }) {
+export function AppShell({ children, activePage, onNavigate }: AppShellProps) {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
@@ -33,7 +40,12 @@ export function AppShell({ children }: { children: ReactNode }) {
         >
           {children}
         </div>
-        <Sidebar collapsed={collapsed} onToggle={() => setCollapsed((c) => !c)} />
+        <Sidebar
+          collapsed={collapsed}
+          onToggle={() => setCollapsed((c) => !c)}
+          activePage={activePage}
+          onNavigate={onNavigate}
+        />
       </div>
     </div>
   );

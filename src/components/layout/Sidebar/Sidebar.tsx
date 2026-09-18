@@ -1,10 +1,12 @@
 import { CollapseSidebarIcon, ExpandSidebarIcon } from "@/components/icons/misc-icons";
 import { SIDEBAR_LOGO_DATA_URI } from "./logo";
-import { NAV_ITEMS } from "./nav-items";
+import { NAV_ITEMS, type PageId } from "./nav-items";
 
 interface SidebarProps {
   collapsed: boolean;
   onToggle: () => void;
+  activePage: PageId;
+  onNavigate: (page: PageId) => void;
 }
 
 /**
@@ -12,7 +14,7 @@ interface SidebarProps {
  * 76px icon-only rail (state is owned by AppShell so it can reflow the main
  * content's left offset in step with the sidebar's width).
  */
-export function Sidebar({ collapsed, onToggle }: SidebarProps) {
+export function Sidebar({ collapsed, onToggle, activePage, onNavigate }: SidebarProps) {
   return (
     <div
       className={`box-border h-[882px] absolute left-0 top-0 flex flex-col gap-0 justify-start bg-white border-r border-[#e2e8f0] z-10 transition-[width] duration-200 ${
@@ -73,32 +75,36 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
       )}
 
       <nav className="box-border w-full [flex:1_1_0] flex flex-col gap-[4px] p-[12px] justify-start items-start overflow-hidden">
-        {NAV_ITEMS.map((item) => (
-          <a
-            key={item.label}
-            href="#"
-            title={collapsed ? item.label : undefined}
-            className={`box-border w-full h-fit shrink-0 flex flex-row gap-[12px] items-center rounded-[8px] ${
-              collapsed ? "p-[10px_8px] justify-center" : "p-[10px_12px] justify-start"
-            } ${item.active ? "bg-[#3b82f61a]" : ""}`}
-          >
-            <item.icon />
-            {!collapsed && (
-              <div
-                className="box-border shrink-0 h-[20px] flex flex-col gap-0 justify-start items-start overflow-hidden"
-                style={{ width: item.width }}
-              >
+        {NAV_ITEMS.map((item) => {
+          const active = item.id === activePage;
+          return (
+            <button
+              key={item.id}
+              type="button"
+              title={collapsed ? item.label : undefined}
+              onClick={() => onNavigate(item.id)}
+              className={`box-border w-full h-fit shrink-0 flex flex-row gap-[12px] items-center rounded-[8px] cursor-pointer ${
+                collapsed ? "p-[10px_8px] justify-center" : "p-[10px_12px] justify-start"
+              } ${active ? "bg-[#3b82f61a]" : "hover:bg-[#f1f5f9]"}`}
+            >
+              <item.icon />
+              {!collapsed && (
                 <div
-                  className={`text-[14px]/[20px] box-border font-normal text-left whitespace-nowrap ${
-                    item.active ? "text-[#3b82f6ff] font-medium" : "text-[#334155ff]"
-                  }`}
+                  className="box-border shrink-0 h-[20px] flex flex-col gap-0 justify-start items-start overflow-hidden"
+                  style={{ width: item.width }}
                 >
-                  {item.label}
+                  <div
+                    className={`text-[14px]/[20px] box-border font-normal text-left whitespace-nowrap ${
+                      active ? "text-[#3b82f6ff] font-medium" : "text-[#334155ff]"
+                    }`}
+                  >
+                    {item.label}
+                  </div>
                 </div>
-              </div>
-            )}
-          </a>
-        ))}
+              )}
+            </button>
+          );
+        })}
       </nav>
     </div>
   );
