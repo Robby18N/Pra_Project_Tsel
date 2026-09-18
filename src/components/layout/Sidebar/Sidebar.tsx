@@ -87,7 +87,7 @@ export function Sidebar({ collapsed, onToggle, activePage, onNavigate }: Sidebar
                 collapsed ? "p-[10px_8px] justify-center" : "p-[10px_12px] justify-start"
               } ${active ? "bg-[#3b82f61a]" : "hover:bg-[#f1f5f9]"}`}
             >
-              <item.icon />
+              <item.icon color={active ? "#3b82f6ff" : "#334155ff"} />
               {!collapsed && (
                 <div
                   className="box-border shrink-0 h-[20px] flex flex-col gap-0 justify-start items-start overflow-hidden"

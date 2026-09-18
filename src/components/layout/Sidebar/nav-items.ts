@@ -22,7 +22,7 @@ export type PageId =
 export interface NavItem {
   id: PageId;
   label: string;
-  icon: ComponentType;
+  icon: ComponentType<{ color?: string }>;
   /** Fixed label width, matching the source design's per-label measurements. */
   width: number;
 }

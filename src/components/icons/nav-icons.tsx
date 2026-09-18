@@ -1,11 +1,15 @@
-/** Icons for the sidebar's main navigation list. */
+/** Icons for the sidebar's main navigation list. Each accepts a `color` so the active/inactive tint (#3b82f6 / #334155) is driven by the sidebar, not hardcoded per icon. */
 
 function stroke(color: string) {
   return { fill: "none", stroke: color, strokeWidth: 1.458, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, vectorEffect: "non-scaling-stroke" as const };
 }
 
-export function ExecutiveIcon() {
-  const s = stroke("#3b82f6ff");
+interface NavIconProps {
+  color?: string;
+}
+
+export function ExecutiveIcon({ color = "#334155ff" }: NavIconProps) {
+  const s = stroke(color);
   return (
     <div className="box-border w-[20px] shrink-0 h-[20px] overflow-hidden relative">
       <svg viewBox="0 0 7 9" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" className="box-border w-[5.833px] h-[7.5px] absolute left-[2.5px] top-[2.5px] overflow-visible z-0">
@@ -24,8 +28,8 @@ export function ExecutiveIcon() {
   );
 }
 
-export function NocOperationsIcon() {
-  const s = stroke("#334155ff");
+export function NocOperationsIcon({ color = "#334155ff" }: NavIconProps) {
+  const s = stroke(color);
   return (
     <div className="box-border w-[20px] shrink-0 h-[20px] overflow-hidden relative">
       <svg viewBox="0 0 6 6" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" className="box-border w-[5px] h-[5px] absolute left-[13.333px] top-[2.5px] overflow-visible z-0">
@@ -44,8 +48,8 @@ export function NocOperationsIcon() {
   );
 }
 
-export function RootCauseIcon() {
-  const s = stroke("#334155ff");
+export function RootCauseIcon({ color = "#334155ff" }: NavIconProps) {
+  const s = stroke(color);
   return (
     <div className="box-border w-[20px] shrink-0 h-[20px] overflow-hidden relative">
       <svg viewBox="0 0 16 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" className="box-border w-[13.333px] h-[13.333px] absolute left-[2.5px] top-[2.5px] overflow-visible z-0">
@@ -58,8 +62,8 @@ export function RootCauseIcon() {
   );
 }
 
-export function HelpdeskIcon() {
-  const s = stroke("#334155ff");
+export function HelpdeskIcon({ color = "#334155ff" }: NavIconProps) {
+  const s = stroke(color);
   return (
     <div className="box-border w-[20px] shrink-0 h-[20px] overflow-hidden relative">
       <svg viewBox="3.3297447491717784e-16 -6.353805574951645e-31 18 16" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" className="box-border w-[15px] h-[13.333px] absolute left-[2.5px] top-[1.667px] overflow-visible z-0">
@@ -72,8 +76,8 @@ export function HelpdeskIcon() {
   );
 }
 
-export function SlaIcon() {
-  const s = stroke("#334155ff");
+export function SlaIcon({ color = "#334155ff" }: NavIconProps) {
+  const s = stroke(color);
   return (
     <div className="box-border w-[20px] shrink-0 h-[20px] overflow-hidden relative">
       <svg viewBox="0 0 20 20" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" className="box-border w-[16.667px] h-[16.667px] absolute left-[1.667px] top-[1.667px] overflow-visible z-0">
@@ -89,8 +93,8 @@ export function SlaIcon() {
   );
 }
 
-export function PartnerPerformanceIcon() {
-  const s = stroke("#334155ff");
+export function PartnerPerformanceIcon({ color = "#334155ff" }: NavIconProps) {
+  const s = stroke(color);
   return (
     <div className="box-border w-[20px] shrink-0 h-[20px] overflow-hidden relative">
       <svg viewBox="0 0 14 6" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" className="box-border w-[11.667px] h-[5px] absolute left-[1.667px] top-[12.5px] overflow-visible z-0">
@@ -109,8 +113,8 @@ export function PartnerPerformanceIcon() {
   );
 }
 
-export function AlertMonitoringIcon() {
-  const s = stroke("#334155ff");
+export function AlertMonitoringIcon({ color = "#334155ff" }: NavIconProps) {
+  const s = stroke(color);
   return (
     <div className="box-border w-[20px] shrink-0 h-[20px] overflow-hidden relative">
       <svg viewBox="0 0 18 15" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" className="box-border w-[15px] h-[12.5px] absolute left-[2.5px] top-[1.667px] overflow-visible z-0">
