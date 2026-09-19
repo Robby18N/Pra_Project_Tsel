@@ -73,7 +73,7 @@ export function OfflineRegionMap() {
   return (
     <div
       ref={containerRef}
-      className="box-border w-full h-[220px] shrink-0 rounded-[8px] border border-[#e2e8f0] overflow-hidden"
+      className="box-border w-full h-[340px] shrink-0 rounded-[8px] border border-[#e2e8f0] overflow-hidden"
     />
   );
 }
