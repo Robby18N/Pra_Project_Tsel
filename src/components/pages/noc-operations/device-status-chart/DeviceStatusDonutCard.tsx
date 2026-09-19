@@ -21,12 +21,13 @@ export function DeviceStatusDonutCard() {
         </div>
       </div>
 
-      <div className="box-border w-full h-fit shrink-0 grid grid-cols-2 gap-[12px] justify-start items-start">
-        {DONUT_SEGMENTS.map((s) => (
-          <div key={s.label} className="box-border w-full h-fit shrink-0 flex flex-col justify-start items-center">
-            {/* Centers this whole legend item within its grid cell, while
-                the label and value inside stay left-aligned to each other. */}
-            <div className="box-border w-fit h-fit shrink-0 flex flex-col gap-[2px] justify-start items-start">
+      <div className="box-border w-full h-fit shrink-0 flex flex-row justify-center items-start">
+        {/* The 2x2 legend is sized to its own content (not stretched full
+            width) and centered as one block, while columns keep their own
+            items left-aligned to each other via a shared grid track. */}
+        <div className="box-border w-fit h-fit shrink-0 grid grid-cols-[auto_auto] gap-x-[40px] gap-y-[12px] justify-items-start">
+          {DONUT_SEGMENTS.map((s) => (
+            <div key={s.label} className="box-border w-fit h-fit shrink-0 flex flex-col gap-[2px] justify-start items-start">
               <div className="box-border w-fit h-fit shrink-0 flex flex-row gap-[6px] items-center">
                 <span className="w-[8px] h-[8px] shrink-0 rounded-full" style={{ backgroundColor: s.color }} />
                 <div className="text-[12px]/[16px] box-border text-[#334155ff] font-normal text-left whitespace-nowrap overflow-hidden text-ellipsis">
@@ -40,8 +41,8 @@ export function DeviceStatusDonutCard() {
                 </span>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </Card>
   );
