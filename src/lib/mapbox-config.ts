@@ -10,4 +10,4 @@
 export const MAPBOX_ACCESS_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN ?? "";
 
 /** Light basemap style matching the dashboard's white/slate aesthetic. */
-export const MAPBOX_STYLE = "mapbox://styles/mapbox/light-v11";
+export const MAPBOX_STYLE = "mapbox://styles/obby19/cmhbgz8od001801qx2ckb225f";
