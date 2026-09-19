@@ -24,7 +24,7 @@ export function AppShell({ children, activePage, onNavigate }: AppShellProps) {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <div className="min-h-screen overflow-x-auto bg-[#f1f5f9] flex justify-center">
+    <div className="min-h-screen bg-[#f1f5f9] flex justify-center">
       <div className="box-border w-full max-w-[1470px] min-w-[1200px] h-fit shrink-0 relative flex flex-row gap-0 justify-start items-stretch bg-[#f1f5f9]">
         {/* Soft color washes so the glassmorphism cards have something to
             blur/tint — plain flat backgrounds make backdrop-blur invisible. */}
