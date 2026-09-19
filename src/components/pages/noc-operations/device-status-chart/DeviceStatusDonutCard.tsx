@@ -25,7 +25,7 @@ export function DeviceStatusDonutCard() {
         {/* The 2x2 legend is sized to its own content (not stretched full
             width) and centered as one block, while columns keep their own
             items left-aligned to each other via a shared grid track. */}
-        <div className="box-border w-fit h-fit shrink-0 grid grid-cols-[auto_auto] gap-x-[40px] gap-y-[12px] justify-items-start">
+        <div className="box-border w-fit h-fit shrink-0 grid grid-cols-[auto_auto] gap-x-[72px] gap-y-[20px] justify-items-start">
           {DONUT_SEGMENTS.map((s) => (
             <div key={s.label} className="box-border w-fit h-fit shrink-0 flex flex-col gap-[2px] justify-start items-start">
               <div className="box-border w-fit h-fit shrink-0 flex flex-row gap-[6px] items-center">
