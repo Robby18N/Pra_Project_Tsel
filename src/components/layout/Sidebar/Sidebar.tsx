@@ -10,14 +10,14 @@ interface SidebarProps {
 }
 
 /**
- * Fixed left navigation rail: org identity and primary nav. Collapses to a
- * 76px icon-only rail (state is owned by AppShell so it can reflow the main
- * content's left offset in step with the sidebar's width).
+ * Left navigation rail: org identity and primary nav. Sticky-positioned so
+ * it stays pinned to the viewport while the dashboard content scrolls.
+ * Collapses to a 76px icon-only rail (state is owned by AppShell).
  */
 export function Sidebar({ collapsed, onToggle, activePage, onNavigate }: SidebarProps) {
   return (
     <div
-      className={`box-border h-[882px] absolute left-0 top-0 flex flex-col gap-0 justify-start bg-white border-r border-[#e2e8f0] z-10 transition-[width] duration-200 ${
+      className={`box-border h-screen sticky top-0 shrink-0 flex flex-col gap-0 justify-start bg-white border-r border-[#e2e8f0] z-10 transition-[width] duration-200 ${
         collapsed ? "w-[76px] items-center" : "w-[289px] items-start"
       }`}
     >
