@@ -23,18 +23,22 @@ export function DeviceStatusDonutCard() {
 
       <div className="box-border w-full h-fit shrink-0 grid grid-cols-2 gap-[12px] justify-start items-start">
         {DONUT_SEGMENTS.map((s) => (
-          <div key={s.label} className="box-border w-full h-fit shrink-0 flex flex-col gap-[2px] justify-start items-center">
-            <div className="box-border w-fit h-fit shrink-0 flex flex-row gap-[6px] items-center">
-              <span className="w-[8px] h-[8px] shrink-0 rounded-full" style={{ backgroundColor: s.color }} />
-              <div className="text-[12px]/[16px] box-border text-[#334155ff] font-normal text-left whitespace-nowrap overflow-hidden text-ellipsis">
-                {s.label}
+          <div key={s.label} className="box-border w-full h-fit shrink-0 flex flex-col justify-start items-center">
+            {/* Centers this whole legend item within its grid cell, while
+                the label and value inside stay left-aligned to each other. */}
+            <div className="box-border w-fit h-fit shrink-0 flex flex-col gap-[2px] justify-start items-start">
+              <div className="box-border w-fit h-fit shrink-0 flex flex-row gap-[6px] items-center">
+                <span className="w-[8px] h-[8px] shrink-0 rounded-full" style={{ backgroundColor: s.color }} />
+                <div className="text-[12px]/[16px] box-border text-[#334155ff] font-normal text-left whitespace-nowrap overflow-hidden text-ellipsis">
+                  {s.label}
+                </div>
               </div>
-            </div>
-            <div className="text-[14px]/[20px] box-border text-[#020617ff] font-semibold text-center whitespace-nowrap">
-              {s.value.toLocaleString()}{" "}
-              <span className="text-[12px]/[16px] text-[#64748bff] font-normal">
-                ({((s.value / DONUT_TOTAL) * 100).toFixed(1)}%)
-              </span>
+              <div className="text-[14px]/[20px] box-border text-[#020617ff] font-semibold text-left whitespace-nowrap pl-[14px]">
+                {s.value.toLocaleString()}{" "}
+                <span className="text-[12px]/[16px] text-[#64748bff] font-normal">
+                  ({((s.value / DONUT_TOTAL) * 100).toFixed(1)}%)
+                </span>
+              </div>
             </div>
           </div>
         ))}
