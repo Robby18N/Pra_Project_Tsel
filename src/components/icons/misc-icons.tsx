@@ -143,3 +143,27 @@ export function TrendUpIcon({ color = "#16a34aff" }: { color?: string }) {
     </div>
   );
 }
+
+/** Empty checkbox glyph used as a decorative selection affordance on KPI tiles and list rows. */
+export function UncheckedBoxIcon() {
+  return (
+    <div className="box-border w-[16px] shrink-0 h-[16px] relative">
+      <div className="box-border w-[14px] h-[14px] shadow-[0px_1px_1.75px_0px_#0000000d] absolute left-[1px] top-[1px] bg-white outline outline-1 outline-[#d4d4d4] rounded-[4px] z-0" />
+    </div>
+  );
+}
+
+/** Small double-checkmark ("delivered/acknowledged") glyph. */
+export function DoubleCheckIcon({ color = "#334155ff" }: { color?: string }) {
+  const s = { fill: "none", stroke: color, strokeWidth: 1.167, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, vectorEffect: "non-scaling-stroke" as const };
+  return (
+    <div className="box-border w-[16px] shrink-0 h-[16px] overflow-hidden relative">
+      <svg viewBox="0 0 16 11" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" className="box-border w-[10.667px] h-[7.333px] absolute left-[1.333px] top-[4px] overflow-visible z-0">
+        <path d="M16 0L5 11L0 6" {...s} />
+      </svg>
+      <svg viewBox="0 0 9 7.5" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" className="box-border w-[6px] h-[5px] absolute left-[8.667px] top-[6.667px] overflow-visible z-10">
+        <path d="M9 0L1.5 7.5L0 6" {...s} />
+      </svg>
+    </div>
+  );
+}
