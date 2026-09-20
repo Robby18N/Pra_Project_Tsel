@@ -28,7 +28,7 @@ export function EscalationTimelineCard() {
           const textColor = step.state === "pending" ? "text-[#64748bff]" : "text-[#020617ff]";
           return (
             <div key={`${step.title}-${index}`} className="box-border w-full h-fit shrink-0 flex flex-row gap-[12px] justify-start items-stretch">
-              <div className="box-border w-fit shrink-0 h-full flex flex-col gap-0 justify-start items-center">
+              <div className="box-border w-fit shrink-0 self-stretch flex flex-col gap-0 justify-start items-center">
                 <div className="box-border w-fit h-fit shrink-0 pt-[4px]">
                   <div className={`box-border w-[12px] h-[12px] shrink-0 rounded-[9999px] ${DOT_CLASSES[step.state]}`} />
                 </div>
