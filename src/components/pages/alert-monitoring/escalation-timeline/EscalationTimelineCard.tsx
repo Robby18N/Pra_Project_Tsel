@@ -17,17 +17,17 @@ const LINE_CLASSES: Record<TimelineStep["state"], string> = {
 /** "Escalation timeline" card: vertical step-by-step history of the most recent critical alert. */
 export function EscalationTimelineCard() {
   return (
-    <Card className="w-full h-[400px] rounded-[12px] flex flex-col gap-0 justify-start items-start overflow-hidden">
+    <Card className="w-full h-fit rounded-[12px] flex flex-col gap-0 justify-start items-start overflow-hidden">
       <div className="box-border w-full h-fit shrink-0 p-[16px_16px_0px_16px]">
         <SectionHeading title="Escalation timeline" subtitle="Most recent critical alert, ALM-88421" />
       </div>
 
-      <div className="box-border w-full flex-1 min-h-0 flex flex-col p-[16px] justify-start items-start overflow-y-auto">
+      <div className="box-border w-full h-fit flex flex-col p-[16px] justify-start items-start">
         {ESCALATION_TIMELINE.map((step, index) => {
           const isLast = index === ESCALATION_TIMELINE.length - 1;
           const textColor = step.state === "pending" ? "text-[#64748bff]" : "text-[#020617ff]";
           return (
-            <div key={`${step.title}-${index}`} className="box-border w-full h-fit shrink-0 flex flex-row gap-[12px] justify-start items-start">
+            <div key={`${step.title}-${index}`} className="box-border w-full h-fit shrink-0 flex flex-row gap-[12px] justify-start items-stretch">
               <div className="box-border w-fit shrink-0 h-full flex flex-col gap-0 justify-start items-center">
                 <div className="box-border w-fit h-fit shrink-0 pt-[4px]">
                   <div className={`box-border w-[12px] h-[12px] shrink-0 rounded-[9999px] ${DOT_CLASSES[step.state]}`} />

@@ -38,7 +38,7 @@ export function LatestAlertsCard() {
         </div>
       </div>
 
-      <div className="box-border w-full h-[723px] shrink-0 flex flex-col gap-[10px] p-[16px] justify-start items-start overflow-y-auto">
+      <div className="box-border w-full h-fit shrink-0 flex flex-col gap-[10px] p-[16px] justify-start items-start">
         {LATEST_ALERTS.map((alert, index) => (
           <AlertRow key={`${alert.deviceId}-${alert.time}-${index}`} {...alert} />
         ))}
