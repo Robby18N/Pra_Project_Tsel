@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { FilterGlyphIcon } from "@/components/icons/misc-icons";
 import { FilterPill } from "./FilterPill";
 
@@ -16,10 +17,12 @@ const DEFAULT_FILTERS: FilterDatum[] = [
 
 interface FilterBarProps {
   filters?: FilterDatum[];
+  /** Optional trailing action rendered after the pills (e.g. a "Clear filters" button). */
+  trailing?: ReactNode;
 }
 
 /** Row of quick filters below the header (customer / project / partner / region / date range). */
-export function FilterBar({ filters = DEFAULT_FILTERS }: FilterBarProps) {
+export function FilterBar({ filters = DEFAULT_FILTERS, trailing }: FilterBarProps) {
   return (
     <div className="box-border w-full h-fit shrink-0 flex flex-row gap-[8px] p-[12px_20px] justify-start items-center bg-[#f8fafcff] border-b border-[#e2e8f0]">
       <div className="box-border w-[64px] shrink-0 h-[16px] flex flex-row gap-[8px] p-[0px_4px_0px_0px] justify-start items-center">
@@ -32,6 +35,8 @@ export function FilterBar({ filters = DEFAULT_FILTERS }: FilterBarProps) {
       {filters.map((filter) => (
         <FilterPill key={filter.label} label={filter.label} width={filter.width} />
       ))}
+
+      {trailing}
     </div>
   );
 }
