@@ -7,6 +7,7 @@ import { NAV_ITEMS } from "@/components/layout/Sidebar/nav-items";
 import { ExecutiveDashboard } from "@/components/pages/executive/ExecutiveDashboard";
 import { NocOperationsPage } from "@/components/pages/noc-operations/NocOperationsPage";
 import { AlertMonitoringPage } from "@/components/pages/alert-monitoring/AlertMonitoringPage";
+import { HelpdeskPage } from "@/components/pages/helpdesk/HelpdeskPage";
 import { ComingSoonPage } from "@/components/pages/coming-soon/ComingSoonPage";
 
 export default function Home() {
@@ -17,7 +18,8 @@ export default function Home() {
       {activePage === "executive" && <ExecutiveDashboard />}
       {activePage === "noc-operations" && <NocOperationsPage />}
       {activePage === "alert-monitoring" && <AlertMonitoringPage />}
-      {activePage !== "executive" && activePage !== "noc-operations" && activePage !== "alert-monitoring" && (
+      {activePage === "helpdesk" && <HelpdeskPage />}
+      {activePage !== "executive" && activePage !== "noc-operations" && activePage !== "alert-monitoring" && activePage !== "helpdesk" && (
         <ComingSoonPage title={NAV_ITEMS.find((item) => item.id === activePage)?.label ?? ""} />
       )}
     </AppShell>
